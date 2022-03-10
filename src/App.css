@@ -1,0 +1,3 @@
+.show_contacts::-webkit-scrollbar {
+    display: none;
+}
