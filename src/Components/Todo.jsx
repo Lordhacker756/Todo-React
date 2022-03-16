@@ -1,12 +1,23 @@
-import { useState, react } from 'react';
+import { useState, react , useEffect} from 'react';
 
 
 function Todo() {
+
+    const getData = () =>{
+        var tasks = localStorage.getItem('tasks');
+        if(tasks)
+        {
+            return JSON.parse(localStorage.getItem('tasks'));
+        }
+    }
+
     const [task, setTask] = useState('');
-    const [todo, setTodo] = useState([]);
+    const [todo, setTodo] = useState(getData());
 
     function addTask() {
-        task && (setTodo([...todo, task]));
+        if(task==="")
+        alert('Enter A Task First ✌')
+        task && (setTodo([...todo, task]));;
     }
 
     function deleteTask(ind) {
@@ -17,9 +28,15 @@ function Todo() {
         setTodo(updatedList)
     }
 
+    //Adding data to local storage
+    useEffect(() => {
+        localStorage.setItem('tasks',JSON.stringify(todo));
+    }, [todo])
+    
+
     return (
-        <div className="App bg-purple-600 md:bg-red-500 lg:bg-green-500 p-6 h-screen md:flex md:flex-col md:justify-center">
-            <h1 className='font-mono text-4xl md:text-7xl lg:text-9xl text-white font-extrabold pb-5 md:pb-9 text-center'>TO DO TODAY!</h1>
+        <div className="App bg-blend-overlay md:bg-center bg-gray-700 bg-[url('https://source.unsplash.com/random/1366x768/?night,sky')] p-6 h-screen md:flex md:flex-col md:justify-center">
+            <h1 className='font-mono text-4xl md:text-7xl lg:text-9xl text-white font-extrabold pb-5 md:pb-9 text-center'>TO DO TODAY!⚡</h1>
 
             <div className="body_container flex flex-col-reverse md:flex-row lg:flex-row justify-evenly md:items-center">
 
@@ -45,7 +62,7 @@ function Todo() {
                         <section className="text-gray-400 bg-gray-900 body-font relative rounded-lg drop-shadow-2xl w-full px-10 md:mx-3">
                             <div className="container px-3 py-12 mx-auto">
                                 <div className="flex flex-col text-center w-full mb-5">
-                                    <h1 className="lg:text-2xl text-3xl font-medium title-font pb-0 mb-0 text-white">Add Task</h1>
+                                    <h1 className="lg:text-2xl text-3xl font-medium title-font pb-0 mb-0 text-white">Add Task📝</h1>
                                 </div>
 
                                 <div className="task_inputs w-full">
