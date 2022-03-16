@@ -9,6 +9,10 @@ function Todo() {
         {
             return JSON.parse(localStorage.getItem('tasks'));
         }
+        else
+        {
+            return [];
+        }
     }
 
     const [task, setTask] = useState('');
@@ -30,19 +34,20 @@ function Todo() {
 
     //Adding data to local storage
     useEffect(() => {
+        if(task!=undefined) 
         localStorage.setItem('tasks',JSON.stringify(todo));
     }, [todo])
     
 
     return (
-        <div className="App bg-blend-overlay md:bg-center bg-gray-700 bg-[url('https://source.unsplash.com/random/1366x768/?night,sky')] p-6 h-screen md:flex md:flex-col md:justify-center">
+        <div className="App bg-cover bg-blend-overlay md:bg-center bg-gray-700 bg-[url('https://source.unsplash.com/random/1366x768/?night,sky')] p-6 h-screen md:flex md:flex-col md:justify-center">
             <h1 className='font-mono text-4xl md:text-7xl lg:text-9xl text-white font-extrabold pb-5 md:pb-9 text-center'>TO DO TODAY!⚡</h1>
 
             <div className="body_container flex flex-col-reverse md:flex-row lg:flex-row justify-evenly md:items-center">
 
                 <div className="show_contacts md:w-1/2 py-5 md:py-2 overflow-y-scroll max-h-60 ">
                     <div>
-                        {todo.map((tasks, key) => (
+                        {todo&&todo.map((tasks, key) => (
                             <div key={key} className='task__container bg-gray-900 rounded-lg text-white flex justify-between items-center px-5  md:mx-3 drop-shadow-2xl my-2 mx-2'>
                                 <p className="task text-lg mx-1 sm:mr-3 text-left my-3">
                                     {tasks}
