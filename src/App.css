@@ -1,3 +1,170 @@
 .show_contacts::-webkit-scrollbar {
-    display: none;
+  width: 5px;
+}
+.show_contacts::-webkit-scrollbar-track {
+  background: rgba(130, 130, 130, 0);
+}
+.show_contacts::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.382);
+}
+
+.textArea::-webkit-scrollbar {
+  width: 5px;
+}
+
+textarea {
+  resize: none;
+}
+
+.textArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textArea::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background-color: rgba(224, 224, 224, 0.382);
+}
+
+.task::-webkit-scrollbar {
+  width: 3px; /* width of the entire scrollbar */
+  display: none;
+}
+
+.task::-webkit-scrollbar-track {
+  background: rgba(221, 218, 218, 0.096); /* color of the tracking area */
+}
+
+.task::-webkit-scrollbar-thumb {
+  background-color: blue; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(229, 228, 228); /* creates padding around scroll thumb */
+}
+
+/* From uiverse.io by @liyaxu123 */
+.form-control {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 190px;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+
+.form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}
+
+/* From uiverse.io by @EmmaxPlay */
+.btn {
+  padding: 0.9em 1.6em;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+}
+
+.btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(39, 39, 39);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+/* glow */
+.btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #002bff,
+    #ff00c8,
+    #002bff,
+    #ff0000,
+    #002bff,
+    #ff00c8,
+    #002bff
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 40s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* hover */
+.btn:hover::before {
+  opacity: 1;
+}
+
+/* .btn:active:after {
+  background: transparent;
+} */
+
+.btn:active {
+  opacity: 1;
+  color: #000;
+  font-weight: bold;
 }
